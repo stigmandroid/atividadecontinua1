@@ -8,7 +8,7 @@ app = Flask(__name__)
 # MySQL configurations
 app.config['MYSQL_DATABASE_USER'] = 'root'
 app.config['MYSQL_DATABASE_PASSWORD'] = 'admin'
-app.config['MYSQL_DATABASE_DB'] = 'login'
+app.config['MYSQL_DATABASE_DB'] = 'teste'
 app.config['MYSQL_DATABASE_HOST'] = '127.0.0.1'
 mysql.init_app(app)
 
@@ -19,12 +19,12 @@ def main():
 @app.route('/gravar', methods=['POST','GET'])
 def gravar():
   nome = request.form['nome']
-  email = request.form['email']
-  senha = request.form['senha']
-  if nome and email and senha:
+  cpf = request.form['cpf']
+  endereco = request.form['endereco']
+  if nome and cpf and endereco:
     conn = mysql.connect()
     cursor = conn.cursor()
-    cursor.execute('insert into tbl_user (user_name, user_email, user_password) VALUES (%s, %s, %s)', (nome, email, senha))
+    cursor.execute('insert into tbl_user (user_name, user_cpf, user_endereco) VALUES (%s, %s, %s)', (nome, cpf, endereco))
     conn.commit()
   return render_template('index.html')
 
@@ -33,7 +33,7 @@ def gravar():
 def listar():
   conn = mysql.connect()
   cursor = conn.cursor()
-  cursor.execute('select user_name, user_email, user_password from tbl_user')
+  cursor.execute('select user_name, user_cpf, user_endereco from tbl_user')
   data = cursor.fetchall()
   conn.commit()
   return render_template('lista.html', datas=data)
