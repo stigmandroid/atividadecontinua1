@@ -20,7 +20,7 @@ create schema nome do banco de dados = teste;
 
 use teste;
 
-CREATE TABLE tbl_user ( user_id BIGINT NOT NULL AUTO_INCREMENT, user_name VARCHAR(45) NULL, user_usercpf VARCHAR(45) NULL, user_endereco VARCHAR(45) NULL, PRIMARY KEY (user_id));
+CREATE TABLE tbl_aluno( aluno_id BIGINT NOT NULL AUTO_INCREMENT, aluno_name VARCHAR(45) NULL, aluno_cpf VARCHAR(45) NULL, aluno_endereco VARCHAR(45) NULL, PRIMARY KEY (aluno_id));
 
 exit
 
