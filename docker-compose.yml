@@ -7,11 +7,11 @@ web:
   volumes:
     - .:/data
   ports:
-    - "5000:5000"
+    - "5008:5008"
 
 db:
   image: mysql:5.7
   environment:
       MYSQL_ROOT_PASSWORD: admin
   ports:
-    - "5050:5050"
+    - "3306:3306"
